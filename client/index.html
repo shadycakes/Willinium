@@ -1,0 +1,57 @@
+<head>
+    <title>Edulizer - Diane</title>
+</head>
+
+<body>
+{{> tmpNavbar}}
+
+<div class="container">
+    {{> tmpContent}}
+</div>
+
+</body>
+
+<template name="tmpLogin">
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+    </div>
+</template>
+
+<template name="tmpContent">
+    <!-- Content template -->
+    <div id="divContent" class="col-md-9">
+        {{#if currentUser}}
+            {{> Template.dynamic template=selectContent}}
+        {{else}}
+            {{> tmpContent_Login}}
+        {{/if}}
+    </div>
+</template>
+
+<template name="tmpContent_Login">
+    <h1>Please login to continue</h1>
+</template>
+
+<template name="tmpContent_User">
+    {{> tmpCreateVideo}}
+</template>
+
+<!-- For Real Though -->
+
+<!-- ALL -->
+<!-- Login -->
+
+<!-- Logged In Users -->
+<!-- Search video pages -->
+<!-- View Video page [Play, Pause, Submit Comments] -->
+<!-- Request to become a content creator -->
+
+<!-- Content Creators -->
+<!-- Create video page [Submit for approval] -->
+<!-- Edit existing video page [Submit for approval] -->
+
+<!-- Admin -->
+<!-- Allow user to become content creator -->
+<!-- Create new admins -->
+<!-- Approve or reject video -->
