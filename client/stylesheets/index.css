@@ -53,6 +53,10 @@ table {
 
 /* bootstrap 3 helpers */
 
+body {
+    background-color: blue;
+}
+
 nav {
     max-height: 44px;
 }
