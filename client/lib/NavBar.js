@@ -24,7 +24,7 @@ switchContent = function(content) {
     }
 
     console.log(Session.get('contentMode'));
-}
+};
 
 // Meteor Startup - replaced $(document).ready
 Meteor.startup(function () {

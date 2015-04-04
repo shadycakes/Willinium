@@ -14,7 +14,7 @@ Template.hello.events({
     }
 });*/
 
-var enumContent = {
+enumContent = {
     SEARCH : 'search',
     CREATE : 'create',
     EDIT: 'edit'
