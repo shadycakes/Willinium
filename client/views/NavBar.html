@@ -19,9 +19,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <p class="navbar-text navbar-right">{{> tmpUser}}</p>
+                        {{> tmpUser}}
                     </li>
-                    <p class="navbar-text navbar-right">{{#if currentUser}}</p>
+                    {{#if currentUser}}
                         <li>
                             <input type="button" class="btn-default" value="Search"
                                    onclick="switchContent('search')"/>
