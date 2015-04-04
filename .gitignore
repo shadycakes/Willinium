@@ -219,10 +219,11 @@ pip-log.txt
 ## Webstorm
 ####################
 
-.idea/
+**/.idea/workspace.xml
+**/.idea/tasks.xml
 
 ####################
 ## Meteor.js
 ####################
 
-.meteor/local/
+.meteor/local/*
