@@ -12,13 +12,13 @@ function switchContent(content) {
     if (typeof content != 'undefined') {
         switch (content) {
             case 'search':
-                Session.set('contentMode', com.chasingwithscissors.ContentEnum.SEARCH);
+                Session.set('contentMode', enumContent.SEARCH);
                 break;
             case 'create':
-                Session.set('contentMode', com.chasingwithscissors.ContentEnum.CREATE);
+                Session.set('contentMode', enumContent.CREATE);
                 break;
             default:
-                Session.set('contentMode', com.chasingwithscissors.ContentEnum.SEARCH);
+                Session.set('contentMode', enumContent.SEARCH);
                 break;
         }
     }

@@ -14,7 +14,7 @@ Template.hello.events({
     }
 });*/
 
-com.chasingwithscissors.ContentEnum = {
+var enumContent = {
     SEARCH : 'search',
     CREATE : 'create',
     EDIT: 'edit'
@@ -27,13 +27,13 @@ Template.tmpContent.helpers({
         }
 
         switch (Session.get('contentMode')) {
-            case com.chasingwithscissors.ContentEnum.SEARCH:
+            case enumContent.SEARCH:
                 return 'tmpSearchVideo';
                 break;
-            case com.chasingwithscissors.ContentEnum.CREATE:
+            case enumContent.CREATE:
                 return 'tmpCreateVideo';
                 break;
-            case com.chasingwithscissors.ContentEnum.EDIT:
+            case enumContent.EDIT:
                 return 'tmpEditVideo';
                 break;
             default:
@@ -52,5 +52,5 @@ Template.tmpUser.helpers({
 
 // Meteor Startup - replaced $(document).ready
 Meteor.startup(function () {
-    Session.setDefault('contentMode', com.chasingwithscissors.ContentEnum.SEARCH);
+    Session.setDefault('contentMode', enumContent.SEARCH);
 });
