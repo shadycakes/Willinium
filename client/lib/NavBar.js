@@ -22,6 +22,8 @@ function switchContent(content) {
                 break;
         }
     }
+
+    console.log(Session.get('contentMode'));
 }
 
 // Meteor Startup - replaced $(document).ready
