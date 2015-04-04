@@ -18,18 +18,19 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        {{> tmpUser}}
-                    </li>
-                    {{#if currentUser}}
+                    
                         <li>
-                            <input type="button" class="btn btn-default" value="Search"
+                            <input type="button" class="btn btn-default navbar-btn" value="Search"
                                    onclick="switchContent('search')"/>
                         </li>
                         <li>
-                            <input type="button" class="btn btn-default" value="Create"
+                            <input type="button" class="btn btn-default navbar-btn" value="Create"
                                    onclick="switchContent('create')"/>
                         </li>
+                        <li>
+                        {{> tmpUser}}
+                    </li>
+                    {{#if currentUser}}
                     {{/if}}
                 </ul>
             </div>
