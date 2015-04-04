@@ -8,7 +8,7 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function switchContent(content) {
+switchContent = function(content) {
     if (typeof content != 'undefined') {
         switch (content) {
             case 'search':
