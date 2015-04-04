@@ -15,7 +15,7 @@ function switchContent(content) {
                 Session.set('contentMode', com.chasingwithscissors.ContentEnum.SEARCH);
                 break;
             case 'create':
-                Session.set('contentMode', com.chasingwithscissors.ContentEnum.SEARCH);
+                Session.set('contentMode', com.chasingwithscissors.ContentEnum.CREATE);
                 break;
             default:
                 Session.set('contentMode', com.chasingwithscissors.ContentEnum.SEARCH);
