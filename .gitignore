@@ -219,8 +219,7 @@ pip-log.txt
 ## Webstorm
 ####################
 
-**/.idea/workspace.xml
-**/.idea/tasks.xml
+**/.idea/
 
 ####################
 ## Meteor.js
