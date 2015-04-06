@@ -62,6 +62,25 @@ Template.tmpSearchVideo.helpers({
 
 Template.tmpListVideo.onRendered(function () {
    console.log($(this));
+    var thumb = $(this).find('.imgVimeoThumbnail');
+    console.log(thumb);
+    console.log(thumb.parent());
+    var uri = $(this).data.vimeolink;
+    console.log(uri);
+    var video_id = uri.substr(uri.lastIndexOf('/'));
+    console.log(video_id);
+
+    $.ajax({
+        type:'GET',
+        url: 'http://vimeo.com/api/v2/video/' + video_id + '.json',
+        jsonp: 'callback',
+        dataType: 'jsonp',
+        success: function(data){
+            var thumbnail_src = data[0].thumbnail_large;
+            console.log(thumbnail_src);
+            thumb.attr('src', thumbnail_src);
+        }
+    });
 });
 
 Meteor.startup(function () {
