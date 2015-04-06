@@ -2,14 +2,16 @@
     <!-- Projects Row -->
     <div class="row">
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a class="showVideo" href="#">
                 <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
                 <a href="#">{{title}} - {{creator}}</a>
             </h3>
             <p>{{logline}}</p>
-            <input name="vimeolink" type="hidden" value="{{vimeolink}}"/>
+            {{#if isOwner}}
+                <a class="editVideo" href="#">Edit Video</a>
+            {{/if}}
         </div>
     </div>
 </template>

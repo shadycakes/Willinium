@@ -16,6 +16,7 @@ Template.hello.events({
 
 enumContent = {
     SEARCH : 'search',
+    SHOW: 'show',
     CREATE : 'create',
     EDIT: 'edit'
 };
@@ -29,6 +30,9 @@ Template.tmpContent.helpers({
         switch (Session.get('contentMode')) {
             case enumContent.SEARCH:
                 return 'tmpSearchVideo';
+                break;
+            case enumContent.SHOW:
+                return 'tmpShowVideo';
                 break;
             case enumContent.CREATE:
                 return 'tmpCreateVideo';
