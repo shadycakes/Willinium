@@ -63,11 +63,10 @@ Template.tmpSearchVideo.helpers({
 Meteor.startup(function () {
     $('.imgVimeoThumbnail').each(function (i, el) {
         var thumb = $(this);
-        var uri = thumb.parent().find('input[name="vimeolink"]').val();
-        var video_id = uri.substr(uri.lastIndexOf('/'));
-
         console.log(thumb);
+        var uri = thumb.parent().find('input[name="vimeolink"]').val();
         console.log(uri);
+        var video_id = uri.substr(uri.lastIndexOf('/'));
         console.log(video_id);
 
         $.ajax({
