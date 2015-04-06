@@ -64,6 +64,7 @@ Meteor.startup(function () {
     $('.imgVimeoThumbnail').each(function (i, el) {
         var thumb = $(this);
         console.log(thumb);
+        console.log(thumb.parent());
         var uri = thumb.parent().find('input[name="vimeolink"]').val();
         console.log(uri);
         var video_id = uri.substr(uri.lastIndexOf('/'));
