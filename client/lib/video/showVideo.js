@@ -16,4 +16,5 @@ Template.tmpShowVideo.helpers({
 
 Template.tmpShowVideo.rendered = function () {
     $(this.firstNode).hide().fadeIn(500);
+    $(this.firstNode).fitVids();
 };
