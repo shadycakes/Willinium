@@ -1,3 +1,19 @@
 <template name="tmpSearchVideo">
+    <div class="container">
 
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Some Stuff
+                    <small>Other Stuff</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        {{#each getUserVideos}}
+            [[> tmpListVideo}}
+        {{/each}}
+
+    </div>
 </template>
