@@ -10,6 +10,6 @@ Template.tmpShowVideo.helpers({
             return null;
         }
 
-        return userVideos.findOne({_id: Session.get('contentMode')});
+        return userVideos.findOne({_id: Session.get('showVideoId')});
     }
 });
