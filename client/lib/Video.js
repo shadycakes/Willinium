@@ -60,7 +60,31 @@ Template.tmpSearchVideo.helpers({
     }
 });
 
+Meteor.startup(function () {
+    $('.imgVimeoThumbnail').each(function (i, el) {
+        var thumb = $(this);
+        var uri = thumb.parent().find('input[name="vimeolink"]').val();
+        var video_id = uri.substr(uri.lastIndexOf('/'));
 
+        console.log(thumb);
+        console.log(uri);
+        console.log(video_id);
+
+        $.ajax({
+            type:'GET',
+            url: 'http://vimeo.com/api/v2/video/' + video_id + '.json',
+            jsonp: 'callback',
+            dataType: 'jsonp',
+            success: function(data){
+                var thumbnail_src = data[0].thumbnail_large;
+                console.log(thumbnail_src);
+                thumb.attr('src', thumbnail_src);
+            }
+        });
+    });
+});
+
+/*
 $('.imgVimeoThumbnail').load(function () {
     var uri = $(this).parent().find('input[name="vimeolink"]').val();
     var video_id = uri.substr(uri.lastIndexOf('/'));
@@ -80,4 +104,4 @@ $('.imgVimeoThumbnail').load(function () {
             $(this).attr('src', thumbnail_src);
         }
     });
-});
+});*/
