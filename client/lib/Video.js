@@ -26,10 +26,10 @@ Template.tmpCreateVideo.events({
            return false;
        }
 
-       console.log('creator: ' + Meteor.user().id);
+       console.log('creator: ' + Meteor.user().name);
        console.log('title: ' + tmpCreateVideo.find('input[name="title"]').val());
        console.log('logline: ' + tmpCreateVideo.find('input[name="logline"]').val());
-       console.log('synopsis: ' + tmpCreateVideo.find('input[name="synopsis"]').val());
+       console.log('synopsis: ' + tmpCreateVideo.find('textarea[name="synopsis"]').val());
        console.log('vimeolink: ' + tmpCreateVideo.find('input[name="vimeolink"]').val());
 
        var newUserVideo = {
