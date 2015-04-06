@@ -68,7 +68,7 @@ Template.tmpListVideo.onRendered(function () {
     console.log(thumb.parent());
     var uri = this.data.vimeolink;
     console.log(uri);
-    var video_id = uri.substr(uri.lastIndexOf('/'));
+    var video_id = uri.substr(uri.lastIndexOf('/') + 1);
     console.log(video_id);
 
     $.ajax({
@@ -81,30 +81,6 @@ Template.tmpListVideo.onRendered(function () {
             console.log(thumbnail_src);
             thumb.attr('src', thumbnail_src);
         }
-    });
-});
-
-Meteor.startup(function () {
-    $('.imgVimeoThumbnail').each(function (i, el) {
-        var thumb = $(this);
-        console.log(thumb);
-        console.log(thumb.parent());
-        var uri = thumb.parent().find('input[name="vimeolink"]').val();
-        console.log(uri);
-        var video_id = uri.substr(uri.lastIndexOf('/'));
-        console.log(video_id);
-
-        $.ajax({
-            type:'GET',
-            url: 'http://vimeo.com/api/v2/video/' + video_id + '.json',
-            jsonp: 'callback',
-            dataType: 'jsonp',
-            success: function(data){
-                var thumbnail_src = data[0].thumbnail_large;
-                console.log(thumbnail_src);
-                thumb.attr('src', thumbnail_src);
-            }
-        });
     });
 });
 
