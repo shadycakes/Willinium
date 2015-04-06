@@ -27,17 +27,17 @@ Template.tmpCreateVideo.events({
        }
 
        console.log('creator: ' + Meteor.user().username);
-       console.log('title: ' + tmpCreateVideo.find('input[name="title"]').val());
-       console.log('logline: ' + tmpCreateVideo.find('input[name="logline"]').val());
-       console.log('synopsis: ' + tmpCreateVideo.find('textarea[name="synopsis"]').text());
-       console.log('vimeolink: ' + tmpCreateVideo.find('input[name="vimeolink"]').val());
+       console.log('title: ' + tmpCreateVideo.children('input[name="title"]').val());
+       console.log('logline: ' + tmpCreateVideo.children('input[name="logline"]').val());
+       console.log('synopsis: ' + tmpCreateVideo.children('textarea[name="synopsis"]').val());
+       console.log('vimeolink: ' + tmpCreateVideo.children('input[name="vimeolink"]').val());
 
        var newUserVideo = {
            owner: Meteor.userId(),
            creator: Meteor.user().username,
            title: tmpCreateVideo.find('input[name="title"]').val(),
            logline: tmpCreateVideo.find('input[name="logline"]').val(),
-           synopsis: tmpCreateVideo.find('input[name="synopsis"]').text(),
+           synopsis: tmpCreateVideo.find('textarea[name="synopsis"]').val(),
            vimeolink: tmpCreateVideo.find('input[name="vimeolink"]').val()
        };
 
