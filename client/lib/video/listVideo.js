@@ -31,6 +31,10 @@ Template.tmpListVideo.helpers({
     }
 });
 
+Template.tmpListVideo.rendered = function () {
+    $(this.firstNode).hide().fadeIn(500);
+};
+
 Template.tmpListVideo.events({
     'click .showVideo': function (e) {
         Session.set('showVideoId', this._id);

@@ -6,6 +6,10 @@ Template.tmpCreateVideo.helpers({
 
 });
 
+Template.tmpCreateVideo.rendered = function () {
+    $(this.firstNode).hide().fadeIn(500);
+};
+
 Template.tmpCreateVideo.events({
     'click .btn-primary': function () {
         // SUBMIT

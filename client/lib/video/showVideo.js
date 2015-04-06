@@ -13,3 +13,7 @@ Template.tmpShowVideo.helpers({
         return userVideos.findOne({_id: Session.get('showVideoId')});
     }
 });
+
+Template.tmpShowVideo.rendered = function () {
+    $(this.firstNode).hide().fadeIn(500);
+};

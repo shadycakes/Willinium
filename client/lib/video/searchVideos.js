@@ -7,3 +7,7 @@ Template.tmpSearchVideo.helpers({
         return userVideos.find({}, {sort: {createdAt: -1}});
     }
 });
+
+Template.tmpSearchVideo.rendered = function () {
+    $(this.firstNode).hide().fadeIn(500);
+};
