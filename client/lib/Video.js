@@ -49,23 +49,24 @@ Template.tmpCreateVideo.events({
            title: tmpCreateVideo.find('input[name="title"]').val(),
            logline: tmpCreateVideo.find('input[name="logline"]').val(),
            synopsis: tmpCreateVideo.find('textarea[name="synopsis"]').val(),
-           vimeolink: tmpCreateVideo.find('input[name="vimeolink"]').val()
+           vimeolink: tmpCreateVideo.find('input[name="vimeolink"]').val(),
+           createdAt: new Date()
        });
    }
 });
 
 Template.tmpSearchVideo.helpers({
     getUserVideos: function () {
-        return userVideos.find({});
+        return userVideos.find({}, {sort: {createdAt: -1}});
     }
 });
 
 Template.tmpListVideo.onRendered(function () {
-   console.log($(this));
-    var thumb = $(this).find('.imgVimeoThumbnail');
+    console.log(this);
+    var thumb = this.$('.imgVimeoThumbnail');
     console.log(thumb);
     console.log(thumb.parent());
-    var uri = $(this).data.vimeolink;
+    var uri = this.data.vimeolink;
     console.log(uri);
     var video_id = uri.substr(uri.lastIndexOf('/'));
     console.log(video_id);
