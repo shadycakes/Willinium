@@ -60,6 +60,10 @@ Template.tmpSearchVideo.helpers({
     }
 });
 
+Template.tmpListVideo.onRendered(function () {
+   console.log($(this));
+});
+
 Meteor.startup(function () {
     $('.imgVimeoThumbnail').each(function (i, el) {
         var thumb = $(this);
