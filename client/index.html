@@ -1,4 +1,4 @@
-<head>
+<!--<head>
     <title>Edulizer - Diane</title>
 </head>
 
@@ -9,7 +9,19 @@
     {{> tmpContent}}
 </div>
 
-</body>
+</body>-->
+
+<template name="layout">
+    {{> tmpNavbar}}
+
+    <div class="container">
+        {{> yield}}
+    </div>
+</template>
+
+<template name="home">
+    {{> tmpContent}}
+</template>
 
 <template name="tmpLogin">
     <div class="input-group">
