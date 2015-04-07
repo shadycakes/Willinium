@@ -24,6 +24,7 @@ Router.map(function () {
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
             document.title = "Diane Edulizer - Searching videos";
+            console.log(this.data());
             this.next();
         }
     });
