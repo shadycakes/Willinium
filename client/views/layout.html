@@ -1,12 +1,12 @@
-<template name="template-layout">
-    {{> template-navbar}}
+<template name="templateLayout">
+    {{> templateNavbar}}
 
     <div class="container main-content">
         {{> yield}}
     </div>
 </template>
 
-<template name="template-navbar">
+<template name="templateNavbar">
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
@@ -49,15 +49,21 @@
     </nav>
 </template>
 
-<template name="template-loading">
+<template name="templateLoading">
     <h1>Loading...</h1>
 </template>
 
-<template name="template-not-found">
+<template name="templateNotFound">
     <h1>Resource not found.</h1>
 </template>
 
-<template name="template-search-video">
+<template name="templateHome">
+    <h1>Edulizer - Education for the Future</h1>
+    <h2>This is where an about-us section would go.</h2>
+    <h3>More layout stuff perhaps?</h3>
+</template>
+
+<template name="templateSearchVideo">
     <!-- Page Header -->
     <div class="row">
         <div class="col-lg-12">
@@ -70,12 +76,12 @@
 
     {{#each getUserVideos}}
         <div class="row">
-            {{> template-video-small}}
+            {{> templateVideoSmall}}
         </div>
     {{/each}}
 </template>
 
-<template name="template-video-small">
+<template name="templateVideoSmall">
     <div class="col-md-4 portfolio-item">
         <a class="showVideo" href="{{pathFor 'watchVideo'}}">
             <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/700x400" alt="">
@@ -90,7 +96,7 @@
     </div>
 </template>
 
-<template name="template-post-video">
+<template name="templatePostVideo">
     <div class="table tmpCreateVideo" align="center" style="max-height:600px; max-width:800px;">
         <!-- table class="table table-bordered table-striped"> -->
         <table class="table">
@@ -134,8 +140,8 @@
     </div>
 </template>
 
-<template name="template-edit-video">
-    <div class="table tmpCreateVideo" align="center" style="max-height:600px; max-width:800px;">
+<template name="templateEditVideo">
+    <div class="table" align="center" style="max-height:600px; max-width:800px;">
         <!-- table class="table table-bordered table-striped"> -->
         <table class="table">
             <tbody>
@@ -182,7 +188,7 @@
     </div>
 </template>
 
-<template name="template-watch-video">
+<template name="templateWatchVideo">
     <h1>Title: {{title}}</h1>
     <h2>Creator: {{creator}}</h2>
     <h3>Logline: {{logline}}</h3>

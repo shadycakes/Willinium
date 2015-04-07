@@ -11,7 +11,7 @@ Router.configure({
 Router.map(function () {
     this.route('home', {
         path: '/',
-        template: 'home',
+        template: 'templateHome',
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
             return document.title = "Diane Edulizer - Education for the Future";
@@ -27,7 +27,7 @@ Router.map(function () {
     });
     this.route('postVideo', {
         path: '/video/post',
-        template: 'template-post-video',
+        template: 'templatepostVideo',
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
             return document.title = "Diane Edulizer - Post a video";
@@ -35,7 +35,7 @@ Router.map(function () {
     });
     this.route('editVideo', {
         path: '/video/edit/:_id',
-        template: 'template-edit-video',
+        template: 'templateeditVideo',
         data: function () {
             return userVideos.findOne({_id: this.params._id});
         },
@@ -47,7 +47,7 @@ Router.map(function () {
     });
     this.route('watchVideo', {
         path: '/video/watch/:_id',
-        template: 'template-watch-video',
+        template: 'templatewatchVideo',
         data: function () {
             return userVideos.findOne({_id: this.params._id});
         },
