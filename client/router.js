@@ -14,7 +14,8 @@ Router.map(function () {
         template: 'templateHome',
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            return document.title = "Diane Edulizer - Education for the Future";
+            document.title = "Diane Edulizer - Education for the Future";
+            this.next();
         }
     });
     this.route('searchVideo', {
@@ -22,7 +23,8 @@ Router.map(function () {
         template: 'templateSearchVideo',
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            return document.title = "Diane Edulizer - Searching videos";
+            document.title = "Diane Edulizer - Searching videos";
+            this.next();
         }
     });
     this.route('postVideo', {
@@ -30,7 +32,8 @@ Router.map(function () {
         template: 'templatePostVideo',
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            return document.title = "Diane Edulizer - Post a video";
+            document.title = "Diane Edulizer - Post a video";
+            this.next();
         }
     });
     this.route('editVideo', {
@@ -42,7 +45,8 @@ Router.map(function () {
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
             var videoTitle = this.data().title;
-            return document.title = "Diane Edulizer - Editing '" + videoTitle + "'";
+            document.title = "Diane Edulizer - Editing '" + videoTitle + "'";
+            this.next();
         }
     });
     this.route('watchVideo', {
@@ -54,7 +58,8 @@ Router.map(function () {
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
             var videoTitle = this.data().title;
-            return document.title = "Diane Edulizer - " + videoTitle;
+            document.title = "Diane Edulizer - " + videoTitle;
+            this.next();
         }
     });
 });
