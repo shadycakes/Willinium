@@ -14,7 +14,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
+                <a class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
                     <i class="fa fa-play-circle"></i>  <span class="light">Diane</span> Willinium
                 </a>
             </div>
@@ -75,7 +75,7 @@
     </div>
     <!-- /.row -->
 
-    {{#each}}
+    {{#each test}}
         <div class="row">
             {{> templateVideoSmall}}
         </div>
