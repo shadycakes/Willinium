@@ -10,21 +10,20 @@ Router.map(function () {
         template: 'templateHome',
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            document.title = "Diane Edulizer - Education for the Future";
-            this.next();
+            return document.title = "Diane Edulizer - Education for the Future";
         }
     });
     this.route('searchVideo', {
         path: '/video/search/:searchterms?',
         template: 'templateSearchVideo',
-        data: function () {
-            return userVideos.find({}, {sort: {createdAt: -1}});
+        data: {
+            listVideos: function () {
+                return userVideos.find({}, {sort: {createdAt: -1}});
+            }
         },
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            document.title = "Diane Edulizer - Searching videos";
-            console.log(this.data());
-            this.next();
+            return document.title = "Diane Edulizer - Searching videos";
         }
     });
     this.route('postVideo', {

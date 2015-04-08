@@ -6,7 +6,7 @@ Template.templateSearchVideo.rendered = function () {
     console.log(this);
 };
 
-Template.templateSearchVideo.helpers({
+/*Template.templateSearchVideo.helpers({
     listVideos: function () {
         try {
             console.log(this.data);
@@ -18,4 +18,4 @@ Template.templateSearchVideo.helpers({
             console.log(ex);
         }
     }
-});
+});*/
