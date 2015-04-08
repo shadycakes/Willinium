@@ -21,6 +21,9 @@ Router.map(function () {
     this.route('searchVideo', {
         path: '/video/search/:searchterms?',
         template: 'templateSearchVideo',
+        data: function () {
+            return userVideos.find({}, {sort: {createdAt: -1}});
+        },
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
             document.title = "Diane Edulizer - Searching videos";
