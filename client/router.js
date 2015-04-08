@@ -23,7 +23,7 @@ Router.map(function () {
         },
         onBeforeAction: function () {
             // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            return document.title = "Diane Edulizer - Searching videos";
+            document.title = "Diane Edulizer - Searching videos";
         }
     });
     this.route('postVideo', {
