@@ -1,11 +1,7 @@
 Router.configure({
     layoutTemplate: 'template-layout',
     loadingTemplate: 'template-loading',
-    notFoundTemplate: 'template-not-found',
-    load: function () {
-        $('html, body').animate({ scrollTop: 0 }, 400);
-        $('.main-content').hide().fadeIn(1000);
-    }
+    notFoundTemplate: 'template-not-found'
 });
 
 Router.map(function () {
