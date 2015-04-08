@@ -3,8 +3,10 @@
  */
 
 Template.templatePostVideo.events({
-    'click .btn-primary': function () {
+    'click .btn-primary': function (event) {
         // SUBMIT
+        event.preventDefault();
+
         var tmpCreateVideo = $('.tmpCreateVideo');
 
         if (!tmpCreateVideo) {
