@@ -4,14 +4,12 @@ Router.configure({
     notFoundTemplate: 'template-not-found'
 });
 
+// TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
+
 Router.map(function () {
     this.route('home', {
         path: '/',
-        template: 'templateHome',
-        onBeforeAction: function () {
-            // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            return document.title = "Diane Edulizer - Education for the Future";
-        }
+        template: 'templateHome'
     });
     this.route('searchVideo', {
         path: '/video/search/:searchterms?',
@@ -20,32 +18,17 @@ Router.map(function () {
             listVideos: function () {
                 return userVideos.find({}, {sort: {createdAt: -1}});
             }
-        },
-        onBeforeAction: function () {
-            // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            document.title = "Diane Edulizer - Searching videos";
         }
     });
     this.route('postVideo', {
         path: '/video/post',
-        template: 'templatePostVideo',
-        onBeforeAction: function () {
-            // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            document.title = "Diane Edulizer - Post a video";
-            this.next();
-        }
+        template: 'templatePostVideo'
     });
     this.route('editVideo', {
         path: '/video/edit/:_id',
         template: 'templateEditVideo',
         data: function () {
             return userVideos.findOne({_id: this.params._id});
-        },
-        onBeforeAction: function () {
-            // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            var videoTitle = this.data().title;
-            document.title = "Diane Edulizer - Editing '" + videoTitle + "'";
-            this.next();
         }
     });
     this.route('watchVideo', {
@@ -53,12 +36,6 @@ Router.map(function () {
         template: 'templateWatchVideo',
         data: function () {
             return userVideos.findOne({_id: this.params._id});
-        },
-        onBeforeAction: function () {
-            // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
-            var videoTitle = this.data().title;
-            document.title = "Diane Edulizer - " + videoTitle;
-            this.next();
         }
     });
 });
