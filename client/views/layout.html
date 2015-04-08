@@ -74,6 +74,12 @@
         </div>
     </div>
     <!-- /.row -->
+
+    {{#each data}}
+        <div class="row">
+            {{> templateVideoSmall}}
+        </div>
+    {{/each}}
 </template>
 
 <template name="templateVideoSmall">
