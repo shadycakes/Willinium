@@ -35,8 +35,9 @@ Template.templatePostVideo.events({
             return false;
         }
 
+        console.log(newVideoId);
+        console.log(Router);
         Router.go('watchVideo', {_id: newVideoId});
-
     }
 });
 
@@ -55,4 +56,9 @@ Template.templateVideoSmall.onRendered(function () {
             thumb.attr('src', thumbnail_src);
         }
     });
+});
+
+Template.templateWatchVideo.onRendered(function () {
+    $(this.firstNode).hide().fadeIn(500);
+    $(this.firstNode).fitVids();
 });
