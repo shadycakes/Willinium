@@ -1,10 +1,28 @@
 Router.configure({
-    layoutTemplate: 'template-layout',
-    loadingTemplate: 'template-loading',
-    notFoundTemplate: 'template-not-found'
+    layoutTemplate: 'templateLayout',
+    loadingTemplate: 'templateLoading',
+    notFoundTemplate: 'templateNotFound',
+    load: function () {
+        $('html, body').animate({ scrollTop: 0 }, 400);
+        $('.contentMain').hide().fadeIn(1000);
+    }
 });
 
 // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo
+
+AdminController = RouteController.extend({
+    onBeforeAction: function () {
+        // TODO: Implement admin functionality
+        this.next();
+    }
+});
+
+ContentCreatorController = RouteController.extend({
+    onBeforeAction: function () {
+        // TODO: Implement
+        this.next();
+    }
+});
 
 Router.map(function () {
     this.route('home', {
