@@ -1,11 +1,7 @@
 Router.configure({
     layoutTemplate: 'templateLayout',
     loadingTemplate: 'templateLoading',
-    notFoundTemplate: 'templateNotFound',
-    load: function () {
-        $('html, body').animate({ scrollTop: 0 }, 400);
-        $('.contentMain').hide().fadeIn(1000);
-    }
+    notFoundTemplate: 'templateNotFound'
 });
 
 // TODO: Implement https://atmospherejs.com/manuelschoebel/ms-seo

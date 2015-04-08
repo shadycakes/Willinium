@@ -37,7 +37,7 @@ Template.templatePostVideo.events({
 
         console.log(newVideoId);
         console.log(Router);
-        Router.go('watchVideo', {_id: newVideoId});
+        Router.go('watchVideo', {'_id': newVideoId});
     }
 });
 
