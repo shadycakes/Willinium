@@ -3,5 +3,6 @@
  */
 
 Template.templateSearchVideo.rendered = function () {
-    console.log($(this).currentData());
+    console.log(this.currentData());
+    console.log(Template.currentData());
 };
