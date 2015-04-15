@@ -1,71 +1,267 @@
-<!--<head>
-    <title>Edulizer - Diane</title>
-</head>
 
-<body>
-{{> tmpNavbar}}
+<template name="templateLayout">
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    {{> templateNavbar}}
 
-<div class="container">
-    {{> tmpContent}}
-</div>
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Grayscale</h1>
+                        <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created by Start Bootstrap.</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-</body>-->
+    </body>
 
-<template name="layout">
-    {{> tmpNavbar}}
+    <section id="content" class="content-section text-center">
+        <div class="row">
+            <!-- Main content section -->
+            {{> yield}}
+        </div>
+    </section>
 
-    <div class="container">
-        {{> yield}}
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About Grayscale</h2>
+                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
+                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact Start Bootstrap</h2>
+                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Apucation 20154</p>
+        </div>
+    </footer>
+</template>
+
+<template name="templateNavbar">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
+                    <i class="fa fa-play-circle"></i>  <span class="light">Diane</span> Willinium
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+
+                    <li>
+                        <!--<input type="button" class="btn btn-default navbar-btn" value="Search"
+                               onclick="switchContent('search')"/>-->
+                        <a class="btn btn-primary btn-lg"
+                           href="{{pathFor 'searchVideo'}}" role="button">Search</a>
+                    </li>
+                    <li>
+                        <!--<input type="button" class="btn btn-default navbar-btn" value="Create"
+                               onclick="switchContent('create')"/>-->
+                        <a class="btn btn-primary btn-lg"
+                           href="{{pathFor 'postVideo'}}" role="button">Post</a>
+                    </li>
+                    <li>
+                        {{> tmpUser}}
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+</template>
+
+<template name="templateLoading">
+    <h1>Loading...</h1>
+</template>
+
+<template name="templateNotFound">
+    <h1>Resource not found.</h1>
+</template>
+
+<template name="templateHome">
+    <h1>Edulizer - Education for the Future</h1>
+    <h2>This is where an about-us section would go.</h2>
+    <h3>More layout stuff perhaps?</h3>
+</template>
+
+<template name="templateSearchVideo">
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Video Listings
+                <small>Bananas</small>
+            </h1>
+        </div>
     </div>
+    <!-- /.row -->
+
+    {{#each listVideos}}
+        <div class="row">
+            {{> templateVideoSmall}}
+        </div>
+    {{/each}}
 </template>
 
-<template name="home">
-    {{> tmpContent}}
-</template>
-
-<template name="tmpLogin">
-    <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">@</span>
-        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-    </div>
-</template>
-
-<template name="tmpContent">
-    <!-- Content template -->
-    <div id="divContent" class="col-md-9">
-        {{#if currentUser}}
-            {{> Template.dynamic template=selectContent}}
-        {{else}}
-            {{> tmpContent_Login}}
+<template name="templateVideoSmall">
+    <div class="col-md-4 portfolio-item">
+        <a class="showVideo" href="{{pathFor 'watchVideo'}}">
+            <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/700x400" alt="">
+        </a>
+        <h3>
+            <a href="#">{{title}} - {{creator}}</a>
+        </h3>
+        <p>{{logline}}</p>
+        {{#if isOwner}}
+            <a class="editVideo" href="{{pathFor 'editVideo'}}">Edit Video</a>
         {{/if}}
     </div>
 </template>
 
-<template name="tmpContent_Login">
-    <div class="jumbotron">
-    <h1>Please login to continue</h1>
-</div>
+<template name="templatePostVideo">
+    <div class="table tmpCreateVideo" align="center" style="max-height:600px; max-width:800px;">
+        <!-- table class="table table-bordered table-striped"> -->
+        <table class="table">
+            <tbody>
+            <tr>
+                <th class="text-nowrap" scope="row">Title</th>
+                <td>
+                    <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Logline</th>
+                <td>
+                    <input name="logline" type="text" class="form-control" placeholder="Give us a short login!" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Synopsis</th>
+                <td>
+                    <textarea name="synopsis" class="form-control custom-control" rows="4" style="resize: none;" placeholder="Tell us what your documentary is about!"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Vimeo Link</th>
+                <td>
+                    <input name="vimeolink" type="text" class="form-control" placeholder="Vimeo Link" aria-describedby="basic-addon1">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right;">
+                    <!--   <p>
+                          <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
+                      </p> -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
+        </p>
+    </div>
 </template>
 
-<template name="tmpContent_User">
-    {{> tmpCreateVideo}}
+<template name="templateEditVideo">
+    <div class="table" align="center" style="max-height:600px; max-width:800px;">
+        <!-- table class="table table-bordered table-striped"> -->
+        <table class="table">
+            <tbody>
+            <tr>
+                <th class="text-nowrap" scope="row">Title</th>
+                <td>
+                    <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1"
+                           value="{{title}}" readonly/>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Logline</th>
+                <td>
+                    <input name="logline" type="text" class="form-control" placeholder="Give us a short login!" aria-describedby="basic-addon1" value="{{logline}}"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Synopsis</th>
+                <td>
+                    <textarea name="synopsis" class="form-control custom-control" rows="4" style="resize: none;" placeholder="Tell us what your documentary is about!">
+                        {{synopsis}}
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Vimeo Link</th>
+                <td>
+                    <input name="vimeolink" type="text" class="form-control" placeholder="Vimeo Link" aria-describedby="basic-addon1"
+                           value="{{vimeolink}}" readonly/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right;">
+                    <!--   <p>
+                          <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
+                      </p> -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
+        </p>
+    </div>
 </template>
 
-<!-- For Real Though -->
-
-<!-- ALL -->
-<!-- Login -->
-
-<!-- Logged In Users -->
-<!-- Search video pages -->
-<!-- View Video page [Play, Pause, Submit Comments] -->
-<!-- Request to become a content creator -->
-
-<!-- Content Creators -->
-<!-- Create video page [Submit for approval] -->
-<!-- Edit existing video page [Submit for approval] -->
-
-<!-- Admin -->
-<!-- Allow user to become content creator -->
-<!-- Create new admins -->
-<!-- Approve or reject video -->
+<template name="templateWatchVideo">
+    <h1>Title: {{title}}</h1>
+    <h2>Creator: {{creator}}</h2>
+    <h3>Logline: {{logline}}</h3>
+    <h3>Synopsis: {{synopsis}}</h3>
+    <div class="fluid-width-video-wrapper">
+        <iframe src="{{vimeolink}}" width="700" height="400" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+</template>

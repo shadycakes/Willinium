@@ -1,60 +1,64 @@
 /**
- * Created by Trevor on 3/17/2015.
+ * Created by Trevor on 4/7/2015.
  */
 
-/*Template.hello.greeting = function () {
-    return "Welcome to hello.";
-};
+Template.templatePostVideo.events({
+    'click .btn-primary': function (event) {
+        // SUBMIT
+        event.preventDefault();
 
-Template.hello.events({
-    'click input': function () {
-        // template data, if any, is available in 'this'
-        if (typeof console !== 'undefined')
-            console.log("You pressed the button");
-    }
-});*/
+        var tmpCreateVideo = $('.tmpCreateVideo');
 
-enumContent = {
-    SEARCH : 'search',
-    SHOW: 'show',
-    CREATE : 'create',
-    EDIT: 'edit'
-};
-
-Template.tmpContent.helpers({
-    selectContent: function () {
-        if (Meteor.user() == null) {
-            return 'tmpContent_Login';
+        if (!tmpCreateVideo) {
+            return false;
         }
 
-        switch (Session.get('contentMode')) {
-            case enumContent.SEARCH:
-                return 'tmpSearchVideo';
-                break;
-            case enumContent.SHOW:
-                return 'tmpShowVideo';
-                break;
-            case enumContent.CREATE:
-                return 'tmpCreateVideo';
-                break;
-            case enumContent.EDIT:
-                return 'tmpEditVideo';
-                break;
-            default:
-                return 'tmpSearchVideo';
-                break;
-        }
-        return 'tmpContent_User';
-   }
-});
+        // TODO: Validation
+        var validate = true;
 
-Template.tmpUser.helpers({
-    getUserName: function () {
-        return Meteor.user().name;
+        if (!validate) {
+            // TODO: Inform user of mistakes
+            return false;
+        }
+
+        var newVideoId = userVideos.insert({
+            owner: Meteor.userId(),
+            creator: Meteor.user().username,
+            title: tmpCreateVideo.find('input[name="title"]').val(),
+            logline: tmpCreateVideo.find('input[name="logline"]').val(),
+            synopsis: tmpCreateVideo.find('textarea[name="synopsis"]').val(),
+            vimeolink: tmpCreateVideo.find('input[name="vimeolink"]').val(),
+            createdAt: new Date()
+        });
+
+        if (!newVideoId) {
+            // TODO: Inform user there was an issue
+            console.log("Error submitting video");
+            return false;
+        }
+
+        Router.go('watchVideo', {'_id': newVideoId});
     }
 });
 
-// Meteor Startup - replaced $(document).ready
-Meteor.startup(function () {
-    Session.setDefault('contentMode', enumContent.SEARCH);
+Template.templateVideoSmall.onRendered(function () {
+    var thumb = this.$('.imgVimeoThumbnail');
+    var uri = this.data.vimeolink;
+    var video_id = uri.substr(uri.lastIndexOf('/') + 1);
+
+    $.ajax({
+        type:'GET',
+        url: 'http://vimeo.com/api/v2/video/' + video_id + '.json',
+        jsonp: 'callback',
+        dataType: 'jsonp',
+        success: function(data){
+            var thumbnail_src = data[0].thumbnail_large;
+            thumb.attr('src', thumbnail_src);
+        }
+    });
+});
+
+Template.templateWatchVideo.onRendered(function () {
+    $(this.firstNode).hide().fadeIn(500);
+    $(this.firstNode).fitVids();
 });
