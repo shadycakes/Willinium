@@ -63,9 +63,13 @@ var beforeHooks = {
             this.render('templateLogin');
             pause();
         }
+
+        this.next();
     },
     scrollToTop: function() {
         $('body,html').scrollTop(0);
+        
+        this.next();
     }
 };
 
