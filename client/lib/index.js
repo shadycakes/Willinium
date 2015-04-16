@@ -7,7 +7,7 @@ Template.templatePostVideo.events({
         // SUBMIT
         event.preventDefault();
 
-        var tmpCreateVideo = $('.tmpCreateVideo');
+        var tmpCreateVideo = $('.create-video-form');
 
         if (!tmpCreateVideo) {
             return false;
