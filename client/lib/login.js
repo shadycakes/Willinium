@@ -30,9 +30,9 @@ Template.templateLogin.events({
         Meteor.loginWithPassword(username, password, function (error) {
             if (error) {
                 console.log(error);
+            } else {
+                Router.go('home');
             }
         });
-
-        return false;
     }
 });
