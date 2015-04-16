@@ -16,3 +16,4 @@ mrt:moment
 iron:router
 accounts-google
 service-configuration
+http
