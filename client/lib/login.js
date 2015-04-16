@@ -15,11 +15,24 @@ Template.templateLogin.events({
                 }
             }
         );
+
+        return false;
     },
     'click .btn-primary': function (event) {
         // SUBMIT
         event.preventDefault();
 
         // TODO: Validate
+
+        var username = $('#username').val();
+        var password = $('#password').val();
+
+        Meteor.loginWithPassword(username, password, function (error) {
+            if (error) {
+                console.log(error);
+            }
+        });
+
+        return false;
     }
 });

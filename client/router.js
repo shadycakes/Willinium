@@ -71,16 +71,18 @@ var beforeHooks = {
         this.next();
     },
     scrollToTop: function() {
-        $('body,html').scrollTop(0);
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1500, 'easeInOutExpo');
 
         this.next();
     }
 };
 
 // (Global) Before hooks for any route
-Router.onBeforeAction(beforeHooks.isLoggedIn);
+//Router.onBeforeAction(beforeHooks.isLoggedIn);
 Router.onBeforeAction(beforeHooks.scrollToTop);
 
 // Before hooks for specific routes
 // Must be equal to the route names of the Iron Router route map
-//Router.before(IR_BeforeHooks.isLoggedIn, {only: ['searchVideo', 'postVideo', 'editVideo', 'watchVideo']});
+Router.before(beforeHooks.isLoggedIn, {only: ['searchVideo', 'postVideo', 'editVideo', 'watchVideo']});
