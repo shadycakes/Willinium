@@ -177,13 +177,11 @@
         <a class="showVideo" href="{{pathFor 'watchVideo'}}">
             <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/700x400" alt="">
         </a>-->
-        <h3>
-            <!--<a href="#">{{title}} - {{creator}}</a>-->
-            <a class="showVideo" href="{{pathFor 'watchVideo'}}">
-                <img class="img-responsive style:'width:200px;height:auto;'" src="http://placehold.it/700x400" alt="">
-            </a>
-        </h3>
-        <p>{{title}}</p>
+        <h1>{{title}}</h1>
+        <!--<a href="#">{{title}} - {{creator}}</a>-->
+        <a class="showVideo" href="{{pathFor 'watchVideo'}}">
+            <img class="img-responsive style:'max-width:200px;max-height:auto;'" src="http://placehold.it/700x400" alt="">
+        </a>
         <p>{{logline}}</p>
         <!--{{#if isOwner}}
             <a class="editVideo" href="{{pathFor 'editVideo'}}">Edit Video</a>
