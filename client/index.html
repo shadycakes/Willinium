@@ -179,11 +179,17 @@
         </a>-->
     <div class="row">
         <div class="col-lg-12">
-            <h1>{{title}}</h1>
-            <a class="showVideo" href="{{pathFor 'watchVideo'}}">
-                <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/200x200" alt="">
-            </a>
-            <p>{{logline}}</p>
+            <div class="row">
+                <h1>{{title}}</h1>
+            </div>
+            <div class="row" style="margin:auto;">
+                <a class="showVideo" href="{{pathFor 'watchVideo'}}">
+                    <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/200x200" alt="">
+                </a>
+            </div>
+            <div class="row">
+                <p>{{logline}}</p>
+            </div>
         </div>
         <!--<a href="#">{{title}} - {{creator}}</a>-->
         <!--{{#if isOwner}}
