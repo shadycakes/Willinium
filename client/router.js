@@ -68,7 +68,7 @@ var beforeHooks = {
     },
     scrollToTop: function() {
         $('body,html').scrollTop(0);
-        
+
         this.next();
     }
 };
