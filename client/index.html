@@ -1,14 +1,44 @@
 
 <template name="templateLayout">
-    {{> templateNavbar}}
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Content Section -->
-    <section id="content" class="content-section text-center">
-        <div class="row">
-            <!-- Main content section -->
-            {{> yield}}
+        {{> templateNavbar}}
+
+        <!-- Content Section -->
+        <section id="content" class="content-section text-center">
+            <div class="row">
+                <!-- Main content section -->
+                {{> yield}}
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container text-center">
+                <p>Copyright &copy; Apucation 20154</p>
+            </div>
+        </footer>
+
+    </body>
+</template>
+
+<template name="templateAboutUs">
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">DOCUcation</h1>
+                        <p class="intro-text">What is this even?</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </header>
 
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
@@ -43,12 +73,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; Apucation 20154</p>
-        </div>
-    </footer>
 </template>
 
 <template name="templateNavbar">
@@ -71,30 +95,36 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-
                     <li>
-                        <!--<input type="button" class="btn btn-default navbar-btn" value="Search"
-                               onclick="switchContent('search')"/>-->
-                        <a class="navbar-brand page-scroll" href="{{pathFor 'searchVideo'}}">
-                            <i class="fa fa-play-circle"></i>  Edu<span class="light">cators</span>
+                        <a class="navbar-brand page-scroll" href="{{pathFor 'aboutUs'}}">
+                            <i class="fa fa-play-circle"></i>  About <span class="light">Us</span>
                         </a>
-                        <!--<a class="btn btn-primary btn-lg"
+                    </li>
+                    {{#if currentUser}}
+                        <li>
+                            <!--<input type="button" class="btn btn-default navbar-btn" value="Search"
+                                   onclick="switchContent('search')"/>-->
+                            <a class="navbar-brand page-scroll" href="{{pathFor 'searchVideo'}}">
+                                <i class="fa fa-play-circle"></i>  Edu<span class="light">cators</span>
+                            </a>
+                            <!--<a class="btn btn-primary btn-lg"
                            href="{{pathFor 'searchVideo'}}" role="button">Search</a>-->
-                    </li>
-                    <li>
-                        <!--<input type="button" class="btn btn-default navbar-btn" value="Create"
-                               onclick="switchContent('create')"/>-->
-                        <!--<a class="btn btn-primary btn-lg"
+                        </li>
+                        <li>
+                            <!--<input type="button" class="btn btn-default navbar-btn" value="Create"
+                                   onclick="switchContent('create')"/>-->
+                            <!--<a class="btn btn-primary btn-lg"
                            href="{{pathFor 'postVideo'}}" role="button">Post</a>-->
-                        <a class="navbar-brand page-scroll" href="{{pathFor 'postVideo'}}">
-                            <i class="fa fa-play-circle"></i>  Cre<span class="light">ators</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a id="logout" class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
-                            <i class="fa fa-play-circle"></i>  Log <span class="light">Out</span>
-                        </a>
-                    </li>
+                            <a class="navbar-brand page-scroll" href="{{pathFor 'postVideo'}}">
+                                <i class="fa fa-play-circle"></i>  Cre<span class="light">ators</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="logout" class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
+                                <i class="fa fa-play-circle"></i>  Log <span class="light">Out</span>
+                            </a>
+                        </li>
+                    {{/if}}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

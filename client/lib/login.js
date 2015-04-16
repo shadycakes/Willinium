@@ -15,5 +15,11 @@ Template.templateLogin.events({
                 }
             }
         );
+    },
+    'click .btn-primary': function (event) {
+        // SUBMIT
+        event.preventDefault();
+
+        // TODO: Validate
     }
 });
