@@ -34,5 +34,7 @@ Template.templateLogin.events({
                 Router.go('home');
             }
         });
+
+        return false;
     }
 });
