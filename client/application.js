@@ -4,22 +4,11 @@
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // code to run on server at startup
-        console.log("server");
-        console.log(Accounts.loginServiceConfiguration);
     });
 }
 
-console.log("client");
-console.log(Accounts.loginServiceConfiguration);
-
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
-});
-
-Accounts.loginServiceConfiguration.insert({
-    service: "google",
-    clientId: "324182854087-a1kra17l0atn9clhv66mqqic167u0pob.apps.googleusercontent.com",
-    secret: "4QmUuf5OiC3WQGdCGAMdAS7K"
 });
 
 Accounts.onCreateUser(function (options, user) {
