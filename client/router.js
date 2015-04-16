@@ -70,8 +70,8 @@ var beforeHooks = {
 };
 
 // (Global) Before hooks for any route
-Router.onBeforeAction(IR_BeforeHooks.isLoggedIn);
-Router.onBeforeAction(IR_BeforeHooks.scrollToTop);
+Router.onBeforeAction(beforeHooks.isLoggedIn);
+Router.onBeforeAction(beforeHooks.scrollToTop);
 
 // Before hooks for specific routes
 // Must be equal to the route names of the Iron Router route map
