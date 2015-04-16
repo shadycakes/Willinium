@@ -29,6 +29,10 @@ Router.map(function () {
         path: '/about',
         template: 'templateAboutUs'
     });
+    this.route('login', {
+        path: '/login',
+        template: 'templateLogin'
+    });
     this.route('searchVideo', {
         path: '/video/search/:searchterms?',
         template: 'templateSearchVideo',
