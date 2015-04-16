@@ -170,19 +170,24 @@
 <template name="templateVideoSmall">
     <!-- MASONRY DIST -->
     
-    <div id="container" class="js-masonry"
-  data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+    <!--<div id="container" class="js-masonry"
+  data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>-->
     
     <!--<div class="col-md-4 portfolio-item">
         <a class="showVideo" href="{{pathFor 'watchVideo'}}">
             <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/700x400" alt="">
         </a>-->
-        <h1>{{title}}</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>{{title}}</h1>
+            <a class="showVideo" href="{{pathFor 'watchVideo'}}">
+                <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/200x200" alt="">
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <p>{{logline}}</p>
+        </div>
         <!--<a href="#">{{title}} - {{creator}}</a>-->
-        <a class="showVideo" href="{{pathFor 'watchVideo'}}">
-            <img class="img-responsive style:'max-width:200px;max-height:auto;'" src="http://placehold.it/700x400" alt="">
-        </a>
-        <p>{{logline}}</p>
         <!--{{#if isOwner}}
             <a class="editVideo" href="{{pathFor 'editVideo'}}">Edit Video</a>
         {{/if}}-->
