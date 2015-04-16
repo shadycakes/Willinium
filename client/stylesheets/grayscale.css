@@ -14,6 +14,10 @@ body {
 	background-repeat:repeat;
 }
 
+/** CSS FOR SEARCH DISTRUBTION **/ 
+.item { width: 25%; }
+.item.w2 { width: 50%; } 
+
 html {
     width: 100%;
     height: 100%;
