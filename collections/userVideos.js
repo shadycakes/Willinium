@@ -3,3 +3,5 @@
  */
 
 userVideos = new Mongo.Collection("userVideos");
+
+userVideos.remove({});
