@@ -7,14 +7,14 @@ Template.templateLogin.events({
         // SUBMIT
         event.preventDefault();
 
-        Meteor.loginWithGoogle(
+        /*Meteor.loginWithGoogle(
             { requestPermissions: ['email'] },
             function(error) {
                 if (error) {
                     console.log(error.reason);
                 }
             }
-        );
+        );*/
 
         return false;
     },
@@ -30,6 +30,7 @@ Template.templateLogin.events({
         Meteor.loginWithPassword(username, password, function (error) {
             if (error) {
                 console.log(error);
+                $('.invalid-login').show();
             } else {
                 Router.go('home');
             }
