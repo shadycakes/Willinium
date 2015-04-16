@@ -35,3 +35,13 @@ Meteor.startup(function () {
         $('.navbar-toggle:visible').click();
     });
 });
+
+Template.templateNavbar.events({
+    'click #logout': function (event) {
+        Meteor.logout(function (error) {
+            if (error) {
+                console.log(error);
+            }
+        });
+    }
+});

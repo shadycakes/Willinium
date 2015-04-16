@@ -2,22 +2,7 @@
 <template name="templateLayout">
     {{> templateNavbar}}
 
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">DOCUcation</h1>
-                        <p class="intro-text">Educating the world. One classroom at a time.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- Content Section -->
     <section id="content" class="content-section text-center">
         <div class="row">
             <!-- Main content section -->
@@ -75,7 +60,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Diane</span> Willinium
+                    <i class="fa fa-play-circle"></i>  DOCU<span class="light">cation</span>
                 </a>
             </div>
 
@@ -90,14 +75,25 @@
                     <li>
                         <!--<input type="button" class="btn btn-default navbar-btn" value="Search"
                                onclick="switchContent('search')"/>-->
-                        <a class="btn btn-primary btn-lg"
-                           href="{{pathFor 'searchVideo'}}" role="button">Search</a>
+                        <a class="navbar-brand page-scroll" href="{{pathFor 'searchVideo'}}">
+                            <i class="fa fa-play-circle"></i>  Edu<span class="light">cators</span>
+                        </a>
+                        <!--<a class="btn btn-primary btn-lg"
+                           href="{{pathFor 'searchVideo'}}" role="button">Search</a>-->
                     </li>
                     <li>
                         <!--<input type="button" class="btn btn-default navbar-btn" value="Create"
                                onclick="switchContent('create')"/>-->
-                        <a class="btn btn-primary btn-lg"
-                           href="{{pathFor 'postVideo'}}" role="button">Post</a>
+                        <!--<a class="btn btn-primary btn-lg"
+                           href="{{pathFor 'postVideo'}}" role="button">Post</a>-->
+                        <a class="navbar-brand page-scroll" href="{{pathFor 'postVideo'}}">
+                            <i class="fa fa-play-circle"></i>  Cre<span class="light">ators</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="logout" class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
+                            <i class="fa fa-play-circle"></i>  Log <span class="light">Out</span>
+                        </a>
                     </li>
                 </ul>
             </div>
