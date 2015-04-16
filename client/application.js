@@ -4,8 +4,13 @@
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // code to run on server at startup
+        console.log("server");
+        console.log(Accounts.loginServiceConfiguration);
     });
 }
+
+console.log("client");
+console.log(Accounts.loginServiceConfiguration);
 
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
