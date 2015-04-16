@@ -53,3 +53,26 @@ Router.map(function () {
         }
     });
 });
+
+////////// HOOKS //////////
+
+var beforeHooks = {
+    isLoggedIn: function(pause) {
+        if (!(Meteor.loggingIn() || Meteor.user())) {
+            //Notify.setError(__('Please login.'));
+            this.render('templateLogin');
+            pause();
+        }
+    },
+    scrollToTop: function() {
+        $('body,html').scrollTop(0);
+    }
+};
+
+// (Global) Before hooks for any route
+Router.onBeforeAction(IR_BeforeHooks.isLoggedIn);
+Router.onBeforeAction(IR_BeforeHooks.scrollToTop);
+
+// Before hooks for specific routes
+// Must be equal to the route names of the Iron Router route map
+//Router.before(IR_BeforeHooks.isLoggedIn, {only: ['searchVideo', 'postVideo', 'editVideo', 'watchVideo']});
