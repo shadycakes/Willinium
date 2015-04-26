@@ -4,17 +4,24 @@
             text-align: right;
         }
 
+        .text-left {
+            text-align: left;
+        }
+
         .video-link-expand {
             display: none;
+        }
+
+        label {
+            font-size: 1.4em;
         }
     </style>
 
     <div class="row">
         <h1 class="page-header">Creator <small>Submit Documentary</small></h1>
-        <hr/>
     </div>
 
-    <form class="create-video-form">
+    <form class="create-video-form text-left">
         <div class="form-group video-link">
             <label for="videoLink">Link to your video</label>
             <input name="videoLink" type="url" id="videoLink"
@@ -31,6 +38,7 @@
             <label for="videoAgeRange">Age Range</label>
             <select name="videoAgeRange" id="videoAgeRange"
                     class="form-control" aria-describedby="basic-addon1">
+                <option>Select an age range...</option>
                 <option value="grades6-8">Grades 6 to 8</option>
                 <option value="grades9-12">Grades 9 to 12</option>
             </select>
@@ -39,6 +47,7 @@
             <label for="videoSubject">Subject</label>
             <select name="videoSubject" id="videoSubject"
                     class="form-control" aria-describedby="basic-addon1">
+                <option>Select a subject...</option>
                 <option value="english">English</option>
                 <option value="socialStudies">Social Studies</option>
                 <option value="math">Math</option>

@@ -59,6 +59,43 @@ function getVimeoVideoId(uri) {
     }
 }
 
+function getYoutubeInfo(video_id) {
+    //https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=YOUR_API_KEY&part=snippet,contentDetails
+    /*var jqxhr = $.get( "example.php", function() {
+        alert( "success" );
+    })
+    .done(function() {
+        alert( "second success" );
+    })
+    .fail(function() {
+        alert( "error" );
+    })
+    .always(function() {
+        alert( "finished" );
+    });*/
+    var apiKey = 'AIzaSyDPqU1HnuUowHEb0FMpAjI4O3T2nt6dCvI';
+    var url = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key=' + apiKey + '&part=snippet,contentDetails';
+
+    var jqxhr = $.get(url, function(data) {
+        console.log(data);
+        try {
+            $('input[name="videoTitle"]').val(data.videos[0].snippet.title);
+            $('textarea[name="videoSynopsis"]').val(data.videos[0].snippet.description);
+        } catch (ex) {
+            console.log(ex);
+        }
+    })
+        .done(function (data) {
+            $('.video-link-expand').show();
+        })
+        .fail(function (data) {
+
+        })
+        .always(function (data) {
+
+        });
+}
+
 Template.templatePostVideo.onRendered(function () {
     // Register event handler to monitor the video link input field
     $('input[name="videoLink"]').on('input paste', function() {
@@ -70,12 +107,14 @@ Template.templatePostVideo.onRendered(function () {
             return false;
         }
 
+        var video_id = '';
+
         switch(getVideoHost($(this).val())) {
             case 'youtube':
-                console.log(getYoutubeVideoId($(this).val()));
+                video_id = getYoutubeVideoId($(this).val());
                 break;
             case 'vimeo':
-                console.log(getVimeoVideoId($(this).val()));
+                video_id = getVimeoVideoId($(this).val());
                 break;
             default:
                 // Error
@@ -83,8 +122,9 @@ Template.templatePostVideo.onRendered(function () {
                 return false;
         }
 
-        $('.video-link-expand').show();
-
+        /*if (video_id && video_id.length > 0) {
+            $('.video-link-expand').show();
+        }*/
     });
 });
 
