@@ -1,49 +1,92 @@
 <template name="templatePostVideo">
-    <!--<div class="table tmpCreateVideo" align="center">-->
-
-    <!-- table class="table table-bordered table-striped"> -->
-    <!--<table class="table">
-        <tbody>
-        <tr>
-            <th class="text-nowrap" scope="row">Title</th>
-            <td>
-                <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1">
-            </td>
-        </tr>
-        <tr>
-            <th class="text-nowrap" scope="row">Logline</th>
-            <td>
-                <input name="logline" type="text" class="form-control" placeholder="Give us a short login!" aria-describedby="basic-addon1">
-            </td>
-        </tr>
-        <tr>
-            <th class="text-nowrap" scope="row">Synopsis</th>
-            <td>
-                <textarea name="synopsis" class="form-control custom-control" rows="4" style="resize: none;" placeholder="Tell us what your documentary is about!"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <th class="text-nowrap" scope="row">Vimeo Link</th>
-            <td>
-                <input name="vimeolink" type="text" class="form-control" placeholder="Vimeo Link" aria-describedby="basic-addon1">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align: right;">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-    </p>-->
     <style>
         .text-right {
             text-align: right;
         }
+
+        .video-link-expand {
+            display: none;
+        }
     </style>
 
-    <div class="row create-video-form">
+    <div class="row">
+        <h1 class="page-header">Creator <small>Submit Documentary</small></h1>
+        <hr/>
+    </div>
+
+    <form class="create-video-form">
+        <div class="form-group video-link">
+            <label for="videoLink">Link to your video</label>
+            <input name="videoLink" type="url" id="videoLink"
+                   placeholder="Example: https://player.vimeo.com/video/69592868"
+                   class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoTitle">Title</label>
+            <input name="videoTitle" type="text" id="videoTitle"
+                   placeholder="The title of your documentary."
+                   class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoAgeRange">Age Range</label>
+            <select name="videoAgeRange" id="videoAgeRange"
+                    class="form-control" aria-describedby="basic-addon1">
+                <option value="grades6-8">Grades 6 to 8</option>
+                <option value="grades9-12">Grades 9 to 12</option>
+            </select>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoSubject">Subject</label>
+            <select name="videoSubject" id="videoSubject"
+                    class="form-control" aria-describedby="basic-addon1">
+                <option value="english">English</option>
+                <option value="socialStudies">Social Studies</option>
+                <option value="math">Math</option>
+                <option value="science">Science</option>
+                <option value="art">Art</option>
+                <option value="music">Music</option>
+            </select>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoLogline">Logline</label>
+            <input name="videoLogline" type="text" id="videoLogline"
+                   placeholder="A brief summary of your documentary."
+                   class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoDirectors">Director(s)</label>
+            <input name="videoDirectors" type="text" id="videoDirectors"
+                   placeholder="The director(s) of this documentary, separated by commas."
+                   class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoLength">Documentary Length</label>
+            <input name="videoLength" type="text" id="videoLength"
+                   placeholder="The run time of the documentary."
+                   class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoCountry">Countries</label>
+            <input name="videoCountry" type="text" id="videoCountry"
+                   placeholder="The countries in which the documentary was shot, separated by commas."
+                   class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoLanguage">Language</label>
+            <input name="videoLanguage" type="text" id="videoLanguage"
+                   placeholder="The language of the documentary."
+                   class="form-control" aria-describedby="basic-addon1"/>
+        </div>
+        <div class="form-group video-link-expand">
+            <label for="videoSynopsis">Synopsis</label>
+            <textarea name="videoSynopsis" id="videoSynopsis"
+                      placeholder="Tell us what your documentary is about."
+                      class="form-control custom-control" rows="4" style="resize: none;"></textarea>
+        </div>
+        <button type="submit" id="videoSubmit" class="btn btn-default video-link-expand">Submit for approval</button>
+    </form>
+
+    <!--<div class="row create-video-form">
         <div class="col-lg-12">
             <h1 class="page-header">Creator
                 <small>Post Video</small>
@@ -86,5 +129,5 @@
                 <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
             </div>
         </div>
-    </div>
+    </div>-->
 </template>
