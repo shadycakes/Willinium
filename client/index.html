@@ -278,7 +278,7 @@
                 <h3>Video Link</h3>
             </div>
             <div class="col-lg-8">
-                <input name="vimeolink" type="url" class="form-control" placeholder="https://player.vimeo.com/video/69592868" aria-describedby="basic-addon1">
+                <input name="videolink" type="url" class="form-control" placeholder="https://player.vimeo.com/video/69592868" aria-describedby="basic-addon1">
             </div>
         </div>
         <div class="row">
@@ -318,8 +318,8 @@
             <tr>
                 <th class="text-nowrap" scope="row">Vimeo Link</th>
                 <td>
-                    <input name="vimeolink" type="text" class="form-control" placeholder="Vimeo Link" aria-describedby="basic-addon1"
-                           value="{{vimeolink}}" readonly/>
+                    <input name="videolink" type="text" class="form-control" placeholder="Video Link" aria-describedby="basic-addon1"
+                           value="{{videolink}}" readonly/>
                 </td>
             </tr>
             <tr>
@@ -338,10 +338,18 @@
 </template>
 
 <template name="templateWatchVideo">
+    <style>
+        .video-player {
+            display: none;
+        }
+    </style>
+
     <h1>Title: {{title}}</h1>
     <div class="fluid-width-video-wrapper">
-        <!--<img src="http://placehold.it/700x400" alt="Video" title="Video coming soon"/>-->
-        <iframe src="{{vimeolink}}" width="700" height="400" frameborder="0"
+        <img class="video-placeholder" src="http://placehold.it/700x400&text=Loading..." alt="Video Loading" title="Your video is loading..."/>
+        <!--<iframe src="//player.vimeo.com/video/{{videolink}}" width="700" height="400" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+        <iframe class="video-player" src="{{videolink}}" width="700" height="400" frameborder="0"
                 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
     <h2>Creator: {{creator}}</h2>
