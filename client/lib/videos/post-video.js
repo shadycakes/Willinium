@@ -17,7 +17,45 @@ function isValidURL(str) {
 }
 
 function getVideoHost(uri) {
-    
+    if (uri.indexOf('youtu') >= 0) {
+        return 'youtube';
+    }
+
+    if (uri.indexOf('vimeo') >= 0) {
+        return 'vimeo';
+    }
+
+    return false;
+}
+
+function getYoutubeVideoId(uri) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = uri.match(regExp);
+    if (match && match[2].length == 11) {
+        console.log(match);
+        return match[2];
+    } else {
+        //error
+        console.log('Failed to get video id from ' + uri);
+        return null;
+    }
+}
+
+function getVimeoVideoId(uri) {
+    //https://vimeo.com/*
+    //https://vimeo.com/channels/*/*
+    //https://vimeo.com/groups/*/videos/*
+
+    var regExp = /^.*vimeo\.com\/(channels\/.*\/|groups\/.*\/videos\/)([^#\&\?]*).*/;
+    var match = uri.match(regExp);
+    if (match && match[2].length > 0) {
+        console.log(match);
+        return match[2];
+    } else {
+        //error
+        console.log('Failed to get video id from ' + uri);
+        return null;
+    }
 }
 
 Template.templatePostVideo.onRendered(function () {
@@ -31,6 +69,20 @@ Template.templatePostVideo.onRendered(function () {
             return false;
         }
 
+        switch(getVideoHost($(this).val())) {
+            case 'youtube':
+                console.log(getYoutubeVideoId($(this).val()));
+                break;
+            case 'vimeo':
+                console.log(getVimeoVideoId($(this).val()));
+                break;
+            default:
+                // Error
+                console.log('Fail');
+                return false;
+        }
+
+        $('.video-link-expand').show();
 
     });
 });
