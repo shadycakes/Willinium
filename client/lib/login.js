@@ -12,6 +12,8 @@ Template.templateLogin.events({
             function(error) {
                 if (error) {
                     console.log(error.reason);
+                } else {
+                    Router.go('Home');
                 }
             }
         );
@@ -32,7 +34,7 @@ Template.templateLogin.events({
                 console.log(error);
                 $('.invalid-login').show();
             } else {
-                Router.go('home');
+                Router.go('Home');
             }
         });
 

@@ -45,3 +45,16 @@ Template.templateNavbar.events({
         });
     }
 });
+
+Template.templateNavbar.helpers({
+    isAdmin: function() {
+        try {
+            var userException = userExceptions.findOne({email: Meteor.user().services.google.email});
+            return userException.role == 'admin';
+        } catch (ex) {
+            console.log(ex);
+        }
+
+        return false;
+    }
+});

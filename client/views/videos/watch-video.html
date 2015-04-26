@@ -1,0 +1,18 @@
+<template name="templateWatchVideo">
+    <style>
+        .video-player {
+            display: none;
+        }
+    </style>
+
+    <h1>Title: {{title}}</h1>
+    <div class="fluid-width-video-wrapper">
+        <img class="video-placeholder" src="http://placehold.it/700x400&text=Loading..." alt="Video Loading" title="Your video is loading..."/>
+        <!--<iframe src="//player.vimeo.com/video/{{videolink}}" width="700" height="400" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+        <iframe class="video-player" src="{{videolink}}" width="700" height="400" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <h3>Logline: {{logline}}</h3>
+    <h3>Synopsis: {{synopsis}}</h3>
+</template>

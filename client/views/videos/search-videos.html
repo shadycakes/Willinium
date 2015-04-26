@@ -1,0 +1,48 @@
+<template name="templateSearchVideo">
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Video Listings
+                <small>Search</small>
+            </h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+  {{#each listVideos}}
+      <div class="row">
+        {{> templateVideoSmall}}
+      </div>
+  {{/each}}
+</template>
+
+<template name="templateVideoSmall">
+    <!-- MASONRY DIST -->
+
+    <!--<div id="container" class="js-masonry"
+  data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>-->
+
+    <!--<div class="col-md-4 portfolio-item">
+        <a class="showVideo" href="{{pathFor 'watchVideo'}}">
+            <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/700x400" alt="">
+        </a>-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <h2>{{title}}</h2>
+            </div>
+            <div class="row" style="margin:auto;">
+                <a class="showVideo" href="{{pathFor 'Watch Video'}}">
+                    <img class="imgVimeoThumbnail" src="http://placehold.it/640x360" alt="">
+                </a>
+            </div>
+            <div class="row">
+                <p>{{logline}}</p>
+            </div>
+        </div>
+        <!--<a href="#">{{title}} - {{creator}}</a>-->
+        <!--{{#if isOwner}}
+            <a class="editVideo" href="{{pathFor 'editVideo'}}">Edit Video</a>
+        {{/if}}-->
+    </div>
+</template>

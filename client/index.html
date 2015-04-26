@@ -1,78 +1,30 @@
-
 <template name="templateLayout">
-    <div id="page-top" class="container" data-spy="scroll" data-target=".navbar-fixed-top">
+    <head>
+       <title>DOCUcation</title>
+    </head>
 
-        {{> templateNavbar}}
+    <body>
+        <div id="page-top" class="container" data-spy="scroll" data-target=".navbar-fixed-top">
 
-        <!-- Content Section -->
-        <section id="content" class="content-section text-center">
-            <div class="row">
-                <!-- Main content section -->
-                {{> yield}}
-            </div>
-        </section>
+            {{> templateNavbar}}
 
-        <!-- Footer -->
-        <footer>
-            <div class="container text-center">
-                <p>&copy; 2015 SHADYCAKES</p>
-            </div>
-        </footer>
-
-    </div>
-</template>
-
-<template name="templateAboutUs">
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
+            <!-- Content Section -->
+            <section id="content" class="content-section text-center">
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">DOCUcation</h1>
-                        <p class="intro-text">Documentary films curated by teachers for teachers</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
+                    <!-- Main content section -->
+                    {{> yield}}
                 </div>
-            </div>
-        </div>
-    </header>
+            </section>
 
-    <!-- About Section -->
-    <section id="about" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>About DOCUcation</h2>
-                <p>Additional information forthcoming.</p>
-            </div>
-        </div>
-    </section>
+            <!-- Footer -->
+            <footer>
+                <div class="container text-center">
+                    <p>&copy; 2015 DOCUcation</p>
+                </div>
+            </footer>
 
-    <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Us</h2>
-                <p>This will be useful at some point in the future.</p>
-                <p><a href="mailto:trevor.j.mcdonald.personal@gmail.com">trevor.j.mcdonald.personal@gmail.com</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </section>
-
+    </body>
 </template>
 
 <template name="templateNavbar">
@@ -83,7 +35,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
+                <a class="navbar-brand page-scroll" href="{{pathFor 'Home'}}">
                     <i class="fa fa-play-circle"></i>  DOCU<span class="light">cation</span>
                 </a>
             </div>
@@ -96,34 +48,36 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="navbar-brand page-scroll" href="{{pathFor 'aboutUs'}}">
+                        <a class="navbar-brand page-scroll" href="{{pathFor 'About Us'}}">
                             <i class="fa fa-play-circle"></i>  About <span class="light">Us</span>
                         </a>
                     </li>
                     {{#if currentUser}}
                         <li>
-                            <a class="navbar-brand page-scroll" href="{{pathFor 'searchVideo'}}">
+                            <a class="navbar-brand page-scroll" href="{{pathFor 'Search Videos'}}">
                                 <i class="fa fa-play-circle"></i>Edu<span class="light">cate</span>
                             </a>
                         </li>
                         <li>
-                            <a class="navbar-brand page-scroll" href="{{pathFor 'postVideo'}}">
+                            <a class="navbar-brand page-scroll" href="{{pathFor 'Submit Video'}}">
                                 <i class="fa fa-play-circle"></i>Cre<span class="light">ate</span>
                             </a>
                         </li>
+                        {{#if isAdmin}}
+                            <li>
+                                <a class="navbar-brand page-scroll" href="#">
+                                    <i class="fa fa-play-circle"></i>Adm<span class="light">in</span>
+                                </a>
+                            </li>
+                        {{/if}}
                         <li>
-                            <a class="navbar-brand page-scroll" href="#">
-                                <i class="fa fa-play-circle"></i>Admin
-                            </a>
-                        </li>
-                        <li>
-                            <a id="logout" class="navbar-brand page-scroll" href="{{pathFor 'home'}}">
+                            <a id="logout" class="navbar-brand page-scroll" href="{{pathFor 'Home'}}">
                                 <i class="fa fa-play-circle"></i>Log <span class="light">Out</span>
                             </a>
                         </li>
                     {{else}}
                         <li>
-                            <a class="navbar-brand page-scroll" href="{{pathFor 'login'}}">
+                            <a class="navbar-brand page-scroll" href="{{pathFor 'Login'}}">
                                 <i class="fa fa-play-circle"></i>Log <span class="light">In</span>
                             </a>
                         </li>
@@ -147,212 +101,4 @@
 <template name="templateHome">
     <h1 class="page-header">DOCUcation</h1>
     <h2>Documentary films curated by teachers for teachers</h2>
-</template>
-
-<template name="templateSearchVideo">
-    <!-- Page Header -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Video Listings
-                <small>Search</small>
-            </h1>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    {{#each listVideos}}
-        <div class="row">
-            {{> templateVideoSmall}}
-        </div>
-    {{/each}}
-</template>
-
-<template name="templateVideoSmall">
-    <!-- MASONRY DIST -->
-    
-    <!--<div id="container" class="js-masonry"
-  data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>-->
-    
-    <!--<div class="col-md-4 portfolio-item">
-        <a class="showVideo" href="{{pathFor 'watchVideo'}}">
-            <img class="img-responsive imgVimeoThumbnail" src="http://placehold.it/700x400" alt="">
-        </a>-->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <h2>{{title}}</h2>
-            </div>
-            <div class="row" style="margin:auto;">
-                <a class="showVideo" href="{{pathFor 'watchVideo'}}">
-                    <img class="imgVimeoThumbnail" src="http://placehold.it/640x360" alt="">
-                </a>
-            </div>
-            <div class="row">
-                <p>{{logline}}</p>
-            </div>
-        </div>
-        <!--<a href="#">{{title}} - {{creator}}</a>-->
-        <!--{{#if isOwner}}
-            <a class="editVideo" href="{{pathFor 'editVideo'}}">Edit Video</a>
-        {{/if}}-->
-    </div>
-</template>
-
-<template name="templatePostVideo">
-    <!--<div class="table tmpCreateVideo" align="center">-->
-
-        <!-- table class="table table-bordered table-striped"> -->
-        <!--<table class="table">
-            <tbody>
-            <tr>
-                <th class="text-nowrap" scope="row">Title</th>
-                <td>
-                    <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1">
-                </td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Logline</th>
-                <td>
-                    <input name="logline" type="text" class="form-control" placeholder="Give us a short login!" aria-describedby="basic-addon1">
-                </td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Synopsis</th>
-                <td>
-                    <textarea name="synopsis" class="form-control custom-control" rows="4" style="resize: none;" placeholder="Tell us what your documentary is about!"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Vimeo Link</th>
-                <td>
-                    <input name="vimeolink" type="text" class="form-control" placeholder="Vimeo Link" aria-describedby="basic-addon1">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: right;">
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-        </p>-->
-    <style>
-        .text-right {
-            text-align: right;
-        }
-    </style>
-
-    <div class="row create-video-form">
-        <div class="col-lg-12">
-            <h1 class="page-header">Creator
-                <small>Post Video</small>
-            </h1>
-        </div>
-        <div class="row">
-           <div class="col-lg-4 text-right">
-               <h2>Title</h2>
-           </div>
-            <div class="col-lg-8">
-                <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 text-right">
-                <h3>Logline</h3>
-            </div>
-            <div class="col-lg-8">
-                <input name="logline" type="text" class="form-control" placeholder="Give us a short login!" aria-describedby="basic-addon1">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 text-right">
-                <h3>Synopsis</h3>
-            </div>
-            <div class="col-lg-8">
-                <textarea name="synopsis" class="form-control custom-control" rows="4" style="resize: none;" placeholder="Tell us what your documentary is about!"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 text-right">
-                <h3>Video Link</h3>
-            </div>
-            <div class="col-lg-8">
-                <input name="videolink" type="url" class="form-control" placeholder="https://player.vimeo.com/video/69592868" aria-describedby="basic-addon1">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 text-right">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-            </div>
-        </div>
-    </div>
-</template>
-
-<template name="templateEditVideo">
-    <div class="table" align="center" style="max-height:600px; max-width:800px;">
-        <!-- table class="table table-bordered table-striped"> -->
-        <table class="table">
-            <tbody>
-            <tr>
-                <th class="text-nowrap" scope="row">Title</th>
-                <td>
-                    <input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1"
-                           value="{{title}}" readonly/>
-                </td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Logline</th>
-                <td>
-                    <input name="logline" type="text" class="form-control" placeholder="Give us a short login!" aria-describedby="basic-addon1" value="{{logline}}"/>
-                </td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Synopsis</th>
-                <td>
-                    <textarea name="synopsis" class="form-control custom-control" rows="4" style="resize: none;" placeholder="Tell us what your documentary is about!">
-                        {{synopsis}}
-                    </textarea>
-                </td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Vimeo Link</th>
-                <td>
-                    <input name="videolink" type="text" class="form-control" placeholder="Video Link" aria-describedby="basic-addon1"
-                           value="{{videolink}}" readonly/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: right;">
-                    <!--   <p>
-                          <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-                      </p> -->
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-        </p>
-    </div>
-</template>
-
-<template name="templateWatchVideo">
-    <style>
-        .video-player {
-            display: none;
-        }
-    </style>
-
-    <h1>Title: {{title}}</h1>
-    <div class="fluid-width-video-wrapper">
-        <img class="video-placeholder" src="http://placehold.it/700x400&text=Loading..." alt="Video Loading" title="Your video is loading..."/>
-        <!--<iframe src="//player.vimeo.com/video/{{videolink}}" width="700" height="400" frameborder="0"
-                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-        <iframe class="video-player" src="{{videolink}}" width="700" height="400" frameborder="0"
-                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
-    <h2>Creator: {{creator}}</h2>
-    <h3>Logline: {{logline}}</h3>
-    <h3>Synopsis: {{synopsis}}</h3>
 </template>

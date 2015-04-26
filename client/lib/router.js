@@ -21,19 +21,19 @@ ContentCreatorController = RouteController.extend({
 });
 
 Router.map(function () {
-    this.route('home', {
+    this.route('Home', {
         path: '/',
         template: 'templateHome'
     });
-    this.route('aboutUs', {
+    this.route('About Us', {
         path: '/about',
         template: 'templateAboutUs'
     });
-    this.route('login', {
+    this.route('Login', {
         path: '/login',
         template: 'templateLogin'
     });
-    this.route('searchVideo', {
+    this.route('Search Videos', {
         path: '/video/search/:searchterms?',
         template: 'templateSearchVideo',
         data: {
@@ -42,18 +42,18 @@ Router.map(function () {
             }
         }
     });
-    this.route('postVideo', {
+    this.route('Submit Video', {
         path: '/video/post',
         template: 'templatePostVideo'
     });
-    this.route('editVideo', {
+    this.route('Edit Video', {
         path: '/video/edit/:_id',
         template: 'templateEditVideo',
         data: function () {
             return userVideos.findOne({_id: this.params._id});
         }
     });
-    this.route('watchVideo', {
+    this.route('Watch Video', {
         path: '/video/watch/:_id',
         template: 'templateWatchVideo',
         data: function () {
@@ -81,9 +81,17 @@ var beforeHooks = {
     }
 };
 
+var afterHooks = {
+    setTitle: function() {
+        document.title = 'DOCUcation - ' + this.route.getName();
+    }
+}
+
 // (Global) Before hooks for any route
 //Router.onBeforeAction(beforeHooks.isLoggedIn);
 Router.onBeforeAction(beforeHooks.scrollToTop);
+
+Router.onAfterAction(afterHooks.setTitle);
 
 // Before hooks for specific routes
 // Must be equal to the route names of the Iron Router route map
