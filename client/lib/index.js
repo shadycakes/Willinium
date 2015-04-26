@@ -27,7 +27,7 @@ Template.templatePostVideo.events({
             title: tmpCreateVideo.find('input[name="title"]').val(),
             logline: tmpCreateVideo.find('input[name="logline"]').val(),
             synopsis: tmpCreateVideo.find('textarea[name="synopsis"]').val(),
-            vimeolink: tmpCreateVideo.find('input[name="vimeolink"]').val(),
+            videolink: tmpCreateVideo.find('input[name="videolink"]').val(),
             createdAt: new Date()
         });
 
@@ -59,6 +59,10 @@ Template.templateVideoSmall.onRendered(function () {
 });
 
 Template.templateWatchVideo.onRendered(function () {
-    $(this.firstNode).hide().fadeIn(500);
-    $(this.firstNode).fitVids();
+    //$(this.firstNode).hide().fadeIn(500);
+    //$(this.firstNode).fitVids();
+    $('.video-player').on('load', function () {
+        $(this).show();
+        $('.video-placeholder').hide();
+    })
 });
