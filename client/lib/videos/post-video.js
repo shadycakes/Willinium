@@ -77,10 +77,9 @@ function getYoutubeInfo(video_id) {
     var url = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key=' + apiKey + '&part=snippet,contentDetails';
 
     var jqxhr = $.get(url, function(data) {
-        console.log(data);
         try {
-            $('input[name="videoTitle"]').val(data.videos[0].snippet.title);
-            $('textarea[name="videoSynopsis"]').val(data.videos[0].snippet.description);
+            $('input[name="videoTitle"]').val(data.items[0].snippet.title);
+            $('textarea[name="videoSynopsis"]').val(data.items[0].snippet.description);
         } catch (ex) {
             console.log(ex);
         }
@@ -99,9 +98,6 @@ function getYoutubeInfo(video_id) {
 Template.templatePostVideo.onRendered(function () {
     // Register event handler to monitor the video link input field
     $('input[name="videoLink"]').on('input', function(event) {
-        console.log(event);
-        console.log($(this).val());
-
         // Hide the info form items until we verify the link
         $('.video-link-expand').hide();
 
@@ -119,7 +115,7 @@ Template.templatePostVideo.onRendered(function () {
                 if (video_id) {
                     getYoutubeInfo(video_id);
                 }
-                
+
                 break;
             case 'vimeo':
                 video_id = getVimeoVideoId($(this).val());
