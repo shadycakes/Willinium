@@ -80,6 +80,8 @@ function getYoutubeInfo(video_id) {
         try {
             $('input[name="videoTitle"]').val(data.items[0].snippet.title);
             $('textarea[name="videoSynopsis"]').val(data.items[0].snippet.description);
+
+            $('input[name="videoInfo"]').val(data);
         } catch (ex) {
             console.log(ex);
         }
