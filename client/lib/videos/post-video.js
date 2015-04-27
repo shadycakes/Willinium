@@ -98,7 +98,10 @@ function getYoutubeInfo(video_id) {
 
 Template.templatePostVideo.onRendered(function () {
     // Register event handler to monitor the video link input field
-    $('input[name="videoLink"]').on('input paste', function() {
+    $('input[name="videoLink"]').on('input paste', function(event) {
+        console.log(event);
+        console.log($(this).val());
+
         // Hide the info form items until we verify the link
         $('.video-link-expand').hide();
 
@@ -118,7 +121,6 @@ Template.templatePostVideo.onRendered(function () {
                 break;
             default:
                 // Error
-                console.log('Fail');
                 return false;
         }
 
