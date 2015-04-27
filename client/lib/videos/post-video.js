@@ -73,6 +73,8 @@ function getYoutubeInfo(video_id) {
             $('textarea[name="videoSynopsis"]').val(data.items[0].snippet.description);
 
             Session.set('videoData', data);
+
+            console.log(Session.get('videoData'));
         } catch (ex) {
             console.log(ex);
         }
@@ -127,7 +129,7 @@ Template.templatePostVideo.onRendered(function () {
 });
 
 Template.templatePostVideo.events({
-    'click .btn-primary': function (event) {
+    'click #videoSubmit': function (event) {
         // SUBMIT
         event.preventDefault();
 
