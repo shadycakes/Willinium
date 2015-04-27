@@ -98,7 +98,7 @@ function getYoutubeInfo(video_id) {
 
 Template.templatePostVideo.onRendered(function () {
     // Register event handler to monitor the video link input field
-    $('input[name="videoLink"]').on('input paste', function(event) {
+    $('input[name="videoLink"]').on('input', function(event) {
         console.log(event);
         console.log($(this).val());
 
