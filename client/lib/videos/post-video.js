@@ -115,6 +115,11 @@ Template.templatePostVideo.onRendered(function () {
         switch(getVideoHost($(this).val())) {
             case 'youtube':
                 video_id = getYoutubeVideoId($(this).val());
+
+                if (video_id) {
+                    getYoutubeInfo(video_id);
+                }
+                
                 break;
             case 'vimeo':
                 video_id = getVimeoVideoId($(this).val());
