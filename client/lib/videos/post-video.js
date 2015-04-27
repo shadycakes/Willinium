@@ -72,6 +72,18 @@ function getYoutubeInfo(video_id) {
             $('input[name="videoTitle"]').val(data.items[0].snippet.title);
             $('textarea[name="videoSynopsis"]').val(data.items[0].snippet.description);
 
+            //PT1H30M1S
+            var regExp = /^PT(\d+)?[H]?(\d+)?[M]?(\d+)?[S]?$/;
+            var match = data.items[0].contentDetails.duration;
+
+            console.log(match);
+
+            var duration = match[1] ? match[1] + ':' : '';
+            duration += match[2] ? match[2] + ':' : '';
+            duration += match[3] ? match[3] : '00';
+
+            $('input[name="videoLength"]').val(duration);
+
             Session.set('videoData', data);
 
             console.log(Session.get('videoData'));
