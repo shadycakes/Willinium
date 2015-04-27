@@ -2,6 +2,12 @@
  * Created by Trevor on 4/26/2015.
  */
 
+function clearForm() {
+    $('.video-link-expand input').val('');
+    $('.video-link-expand').hide();
+    return true;
+}
+
 function isValidURL(str) {
     /*var pattern = new RegExp('^(http[s]?:\/\/)?'+ // protocol
     '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
@@ -33,7 +39,6 @@ function getYoutubeVideoId(uri) {
     var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     var match = uri.match(regExp);
     if (match && match[2].length == 11) {
-        console.log(match);
         return match[2];
     } else {
         //error
@@ -50,7 +55,6 @@ function getVimeoVideoId(uri) {
     var regExp = /^.*vimeo\.com\/(channels\/.*\/|groups\/.*\/videos\/)([^#\&\?]*).*/;
     var match = uri.match(regExp);
     if (match && match[2].length > 0) {
-        console.log(match);
         return match[2];
     } else {
         //error
@@ -60,19 +64,6 @@ function getVimeoVideoId(uri) {
 }
 
 function getYoutubeInfo(video_id) {
-    //https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=YOUR_API_KEY&part=snippet,contentDetails
-    /*var jqxhr = $.get( "example.php", function() {
-        alert( "success" );
-    })
-    .done(function() {
-        alert( "second success" );
-    })
-    .fail(function() {
-        alert( "error" );
-    })
-    .always(function() {
-        alert( "finished" );
-    });*/
     var apiKey = 'AIzaSyDPqU1HnuUowHEb0FMpAjI4O3T2nt6dCvI';
     var url = 'https://www.googleapis.com/youtube/v3/videos?id=' + video_id + '&key=' + apiKey + '&part=snippet,contentDetails';
 
@@ -81,7 +72,7 @@ function getYoutubeInfo(video_id) {
             $('input[name="videoTitle"]').val(data.items[0].snippet.title);
             $('textarea[name="videoSynopsis"]').val(data.items[0].snippet.description);
 
-            $('input[name="videoInfo"]').val(data);
+            Session.set('videoData', data);
         } catch (ex) {
             console.log(ex);
         }
@@ -90,29 +81,31 @@ function getYoutubeInfo(video_id) {
             $('.video-link-expand').show();
         })
         .fail(function (data) {
-
+            console.log(data);
         })
         .always(function (data) {
 
         });
 }
 
+function getVimeoInfo(video_id) {
+
+}
+
 Template.templatePostVideo.onRendered(function () {
     // Register event handler to monitor the video link input field
     $('input[name="videoLink"]').on('input', function(event) {
         // Hide the info form items until we verify the link
-        $('.video-link-expand').hide();
+        clearForm();
 
         // Validate the URL
         if (!isValidURL($(this).val())) {
             return false;
         }
 
-        var video_id = '';
-
         switch(getVideoHost($(this).val())) {
             case 'youtube':
-                video_id = getYoutubeVideoId($(this).val());
+                var video_id = getYoutubeVideoId($(this).val());
 
                 if (video_id) {
                     getYoutubeInfo(video_id);
@@ -120,16 +113,16 @@ Template.templatePostVideo.onRendered(function () {
 
                 break;
             case 'vimeo':
-                video_id = getVimeoVideoId($(this).val());
+                var video_id = getVimeoVideoId($(this).val());
+
+                if (video_id) {
+                    getVimeoInfo(video_id);
+                }
                 break;
             default:
                 // Error
                 return false;
         }
-
-        /*if (video_id && video_id.length > 0) {
-            $('.video-link-expand').show();
-        }*/
     });
 });
 
